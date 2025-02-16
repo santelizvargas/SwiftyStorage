@@ -5,7 +5,6 @@
 //  Created by Steven Santeliz on 15/2/25.
 //
 
-import SwiftyStorage
 import Foundation
 
 // MARK: - Property Wrapper
@@ -62,7 +61,7 @@ public struct DefaultsStorage<T: Codable> {
 public extension DefaultsStorage where T: ExpressibleByNilLiteral {
     /// Initializes an optional storage property with a key.
     /// - Parameter key: The key used for storage.
-    public init(_ key: String) {
+    init(_ key: String) {
         self.init(key, defaultValue: nil)
     }
 }

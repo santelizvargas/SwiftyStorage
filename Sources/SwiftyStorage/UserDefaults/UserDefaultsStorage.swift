@@ -5,7 +5,6 @@
 //  Created by Steven Santeliz on 15/2/25.
 //
 
-import SwiftyStorage
 import Foundation
 
 /// A concrete implementation of `StorageProtocol` using `UserDefaults`.
