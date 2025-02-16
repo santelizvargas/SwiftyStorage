@@ -9,9 +9,9 @@ import XCTest
 import SwiftyStorage
 
 final class DefaultsStorageTests: XCTestCase {
-    private let key = "username"
-    private let initialValue = "Brandon"
-    private let updatedValue = "Steven"
+    private let key = "storedKey"
+    private let initialValue = "InitialValue"
+    private let updatedValue = "UpdatedValue"
     
     override func setUp() {
         super.setUp()
@@ -26,57 +26,57 @@ final class DefaultsStorageTests: XCTestCase {
     func test_defaultValueIsReturned() {
         // Given
         @DefaultsStorage(key, defaultValue: initialValue)
-        var username: String
+        var storedValue: String
         
         // Then
-        XCTAssertEqual(username, initialValue, "Expected default value to be \(initialValue), but got \(username)")
+        XCTAssertEqual(storedValue, initialValue, "Expected default value to be \(initialValue), but got \(storedValue)")
     }
     
     func test_canStoreAndRetrieveNewValue() {
         // Given
         @DefaultsStorage(key, defaultValue: "")
-        var username: String
+        var storedValue: String
         
         // When
-        username = initialValue
+        storedValue = initialValue
         
         // Then
-        XCTAssertEqual(username, initialValue, "Expected stored value to be \(initialValue), but got \(username)")
+        XCTAssertEqual(storedValue, initialValue, "Expected stored value to be \(initialValue), but got \(storedValue)")
     }
     
     func test_canUpdateExistingValue() {
         // Given
         @DefaultsStorage(key)
-        var username: String?
+        var storedValue: String?
         
         // When: Set initial value
-        username = initialValue
+        storedValue = initialValue
         
         // Then
-        XCTAssertEqual(username, initialValue, "Expected username to be \(initialValue) after first assignment, but got \(String(describing: username))")
+        XCTAssertEqual(storedValue, initialValue, "Expected storedValue to be \(initialValue) after first assignment, but got \(String(describing: storedValue))")
         
         // When: Update value
-        username = updatedValue
+        storedValue = updatedValue
         
         // Then
-        XCTAssertEqual(username, updatedValue, "Expected username to be \(updatedValue) after update, but got \(String(describing: username))")
+        XCTAssertEqual(storedValue, updatedValue, "Expected storedValue to be \(updatedValue) after update, but got \(String(describing: storedValue))")
     }
     
     func test_canRemoveValue() {
         // Given
         @DefaultsStorage(key)
-        var username: String?
+        var storedValue: String?
         
         // When: Store a value
-        username = initialValue
+        storedValue = initialValue
         
         // Then
-        XCTAssertEqual(username, initialValue, "Expected username to be \(initialValue) before deletion, but got \(String(describing: username))")
+        XCTAssertEqual(storedValue, initialValue, "Expected storedValue to be \(initialValue) before deletion, but got \(String(describing: storedValue))")
         
         // When: Remove the value
-        username = nil
+        storedValue = nil
         
         // Then
-        XCTAssertNil(username, "Expected username to be nil after deletion, but got \(String(describing: username))")
+        XCTAssertNil(storedValue, "Expected storedValue to be nil after deletion, but got \(String(describing: storedValue))")
     }
 }
