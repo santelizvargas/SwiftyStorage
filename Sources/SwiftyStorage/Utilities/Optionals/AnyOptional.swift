@@ -5,10 +5,11 @@
 //  Created by Steven Santeliz on 15/2/25.
 //
 
-/// A protocol for detecting if an optional value is `nil`.
+/// A protocol to detect `nil` values in optional types.
+/// This is necessary because Swift does not allow checking if a generic `T` is `nil`
+/// unless it is explicitly an `Optional<T>`.
 ///
-/// Used to handle optional values in `DefaultsStorage`, ensuring `nil` values
-/// trigger removal from `UserDefaults`.
+/// This enables checking if `wrappedValue` is `nil`.
 public protocol AnyOptional {
     /// Indicates whether the optional value is `nil`.
     var isNil: Bool { get }
